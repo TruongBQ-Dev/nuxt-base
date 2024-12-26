@@ -13,7 +13,7 @@ const createFetchRequest = (
   return $fetch(url, {
     method,
     baseURL: config.public.apiBaseUrl as string,
-    timeout: 5000,
+    timeout: 10000,
     ...options,
     onRequest({ options: requestOptions }) {
       if (token.value) {

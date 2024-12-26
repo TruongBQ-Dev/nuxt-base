@@ -1,7 +1,14 @@
 <template>
-  <NuxtWelcome />
+  <div>
+    {{ $t("welcome") }}
+    <button @click="setLocale('vn')">VN</button>
+    <button @click="setLocale('en')">EN</button>
+    <button @click="setLocale('ja')">JP</button>
+  </div>
 </template>
 <script setup lang="ts">
+const { setLocale } = useI18n();
+
 const cartsStore = useCartsStore();
 
 const counter = useCookie("authToken");
