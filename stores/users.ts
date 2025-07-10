@@ -1,13 +1,26 @@
-import type { StateUsers, User } from "~/types/users";
+import type { UsersState, User } from "~/types/users";
 
 export const useUsersStore = defineStore("users", {
-  state: (): StateUsers => ({
+  state: (): UsersState => ({
     users: [],
+    loading: false,
+    error: null,
   }),
   actions: {
     async fetchUsers() {
-      const res: User[] = await useFetchClient.get(`/v1/users`);
-      this.users = res;
+      this.loading = true;
+      this.error = null;
+      try {
+        const res: User[] = await useFetchClient.get(`/v1/users`);
+        this.users = res;
+      } catch (error) {
+        this.error =
+          error instanceof Error
+            ? error.message
+            : "An error occurred while fetching users.";
+      } finally {
+        this.loading = false;
+      }
     },
   },
 });

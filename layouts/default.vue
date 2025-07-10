@@ -4,7 +4,7 @@
       <n-header />
       <a-layout>
         <n-sider />
-        <a-layout class="pt-0 pl-4 pt-4">
+        <a-layout class="pl-2 pt-2 md:pl-4 md:pt-4">
           <!-- <n-breadcrumb /> -->
           <a-layout-content class="bg-white min-h-[280px] rounded-tl-lg p-4">
             <slot />

@@ -7,9 +7,7 @@
       :value="locale"
       class="h-[32px]"
       style="width: 140px"
-      @change="
-        (value: string) => setLocale(value)
-      "
+      @change="handleLocaleChange"
     >
       <a-select-option
         v-for="i in locales"
@@ -25,6 +23,10 @@
 </template>
 <script setup lang="ts">
 const { setLocale, locale, locales } = useI18n();
+
+const handleLocaleChange = (value: string) => {
+  setLocale(value);
+};
 </script>
 <style scoped>
 .logo {

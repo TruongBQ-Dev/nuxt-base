@@ -1,6 +1,11 @@
 <template>
   <div>
-    <a-table :data-source="users" :columns="columns" bordered>
+    <a-table
+      :data-source="users"
+      :columns="columns"
+      :loading="loading"
+      bordered
+    >
       <template #bodyCell="{ column, record }">
         <span v-if="column.dataIndex === 'isActive'">
           <a-tag :color="!record.isActive ? 'volcano' : 'green'">
@@ -20,7 +25,7 @@
 </template>
 <script setup lang="ts">
 const usersStore = useUsersStore();
-const { users } = storeToRefs(usersStore);
+const { users, loading } = storeToRefs(usersStore);
 
 const columns = [
   {
@@ -54,9 +59,11 @@ const columns = [
     key: "updatedAt",
   },
 ];
-// const counter = useCookie("authToken");
-// counter.value = "10";
 
 // ** Fetch data
-usersStore.fetchUsers();
+try {
+  await usersStore.fetchUsers();
+} catch (error) {
+  console.error("Failed to fetch users:", error);
+}
 </script>
