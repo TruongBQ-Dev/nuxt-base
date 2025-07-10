@@ -9,6 +9,6 @@ export interface User {
   email: string;
   name: string;
   isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
