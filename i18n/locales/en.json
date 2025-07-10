@@ -1,3 +1,7 @@
 {
-    "welcome": "Welcome to our app"
+  "name": "Name",
+  "email": "Email",
+  "status": "Status",
+  "createdAt": "Created At",
+  "updatedAt": "Updated At"
 }

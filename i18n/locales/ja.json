@@ -1,3 +1,7 @@
 {
-    "welcome": "私たちのアプリケーションへようこそ"
+  "name": "名前",
+  "email": "メール",
+  "status": "ステータス",
+  "createdAt": "作成日",
+  "updatedAt": "更新日"
 }
