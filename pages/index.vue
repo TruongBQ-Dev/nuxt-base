@@ -26,39 +26,40 @@
 <script setup lang="ts">
 const usersStore = useUsersStore();
 const { users, loading } = storeToRefs(usersStore);
+const { t } = useI18n();
 
-const columns = [
+const columns = computed(() => [
   {
     title: "ID",
     dataIndex: "id",
     key: "id",
   },
   {
-    title: "Name",
+    title: t("name"),
     dataIndex: "name",
     key: "name",
   },
   {
-    title: "Email",
+    title: t("email"),
     dataIndex: "email",
     key: "email",
   },
   {
-    title: "Status",
+    title: t("status"),
     dataIndex: "isActive",
     key: "isActive",
   },
   {
-    title: "Created At",
+    title: t("createdAt"),
     dataIndex: "createdAt",
     key: "createdAt",
   },
   {
-    title: "Updated At",
+    title: t("updatedAt"),
     dataIndex: "updatedAt",
     key: "updatedAt",
   },
-];
+]);
 
 // ** Fetch data
 try {

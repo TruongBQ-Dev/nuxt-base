@@ -1,3 +1,7 @@
 {
-    "welcome": "Chào mừng bạn đến với ứng dụng của chúng tôi"
+  "name": "Tên",
+  "email": "Email",
+  "status": "Trạng thái",
+  "createdAt": "Ngày tạo",
+  "updatedAt": "Ngày cập nhật"
 }
