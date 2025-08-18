@@ -1,27 +1,20 @@
 <template>
-  <div>
-    <a-table
-      :data-source="users"
-      :columns="columns"
-      :loading="loading"
-      bordered
-    >
-      <template #bodyCell="{ column, record }">
-        <span v-if="column.dataIndex === 'isActive'">
-          <a-tag :color="!record.isActive ? 'volcano' : 'green'">
-            {{ record.isActive ? "Active" : "Inactive" }}
-          </a-tag>
-        </span>
-        <span
-          v-else-if="
-            column.dataIndex === 'createdAt' || column.dataIndex === 'updatedAt'
-          "
-        >
-          {{ new Date(record[column.dataIndex]).toLocaleDateString() }}
-        </span>
-      </template>
-    </a-table>
-  </div>
+  <a-table :data-source="users" :columns="columns" :loading="loading" bordered>
+    <template #bodyCell="{ column, record }">
+      <span v-if="column.dataIndex === 'isActive'">
+        <a-tag :color="!record.isActive ? 'volcano' : 'green'">
+          {{ record.isActive ? "Active" : "Inactive" }}
+        </a-tag>
+      </span>
+      <span
+        v-else-if="
+          column.dataIndex === 'createdAt' || column.dataIndex === 'updatedAt'
+        "
+      >
+        {{ new Date(record[column.dataIndex]).toLocaleDateString() }}
+      </span>
+    </template>
+  </a-table>
 </template>
 <script setup lang="ts">
 const usersStore = useUsersStore();
