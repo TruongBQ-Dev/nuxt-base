@@ -1,4 +1,4 @@
-import type { UsersState, User } from "~/types/users";
+import type { UsersState, User } from "~/types/users.types";
 
 export const useUsersStore = defineStore("users", {
   state: (): UsersState => ({

@@ -6,10 +6,12 @@ const createFetchRequest = (
   options: {
     params?: Record<string, unknown>;
     body?: object;
-  } = {},
+  } = {}
 ) => {
   const config = useRuntimeConfig();
-  const token = useCookie("authToken");
+  const token = useCookie("auth_token");
+  const router = useRouter();
+
   return $fetch(url, {
     method,
     baseURL: config.public.apiBaseUrl as string,
@@ -19,6 +21,19 @@ const createFetchRequest = (
       if (token.value) {
         requestOptions.headers.set("Authorization", `Bearer ${token.value}`);
       }
+    },
+    async onResponseError(error) {
+      if (!error.response) {
+        return Promise.reject(error);
+      } else if (error.response.status === 401) {
+        token.value = "";
+        await router.push({ name: "auth" });
+        return;
+      } else if (error.response.status === 403) {
+        await router.push({ name: "403" });
+        return;
+      }
+      return Promise.reject(error.response._data);
     },
   });
 };
